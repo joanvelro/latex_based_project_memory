@@ -1,0 +1,316 @@
+
+%----------------------------------------------------------
+%                      Tipo de documento
+%-----------------------------------------------------------
+\documentclass[11pt,oneside,a4paper]{report}
+
+
+%--------------------------------------------------
+%                  Paquetes Latex
+%----------------------------------------------------
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[pdftex,colorlinks,linkcolor=black,citecolor=black,colorlinks=true,urlcolor=black]{hyperref}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage{lscape} 
+\usepackage{array}
+\usepackage{pdfpages}
+\usepackage{minitoc}
+\usepackage{tocloft}
+
+
+
+
+
+%---------------------------------------------------------------------------------
+%                         Definición encabezados
+%--------------------------------------------------------------------------------
+
+%   E       EVEN PAGE (PAR)
+%   O      ODD PAGE (IMPAR)
+%   L       LEFT 
+%   C      CENTER
+%   R       RIGHT
+%    H       HEADER
+%    F        FOOTER
+
+\lhead{\includegraphics[scale=0.1]{encabezadoI}}
+\rhead{\textsc{\leftmark}}
+
+
+%\fancyhead[LO]{\includegraphics[scale=0.1]{encabezadoI}}
+%\fancyhead[RE]{\textsc{\leftmark}}
+
+%\foot{\textsc{Diseño de una grúa pórtico de exterior}}
+%\lfoot{\rightmark} 
+
+%
+%\fancyhead[LO,RE]{\chaptermark.} 
+%\fancyhead[LO,RE]{\chaptermark.} 
+%
+%
+%\renewcommand{\chaptermark}[1]%
+%   {\markboth{\MakeUppercase{\thechapter.\ #1}}{}}
+%\renewcommand{\sectionmark}[1]%
+%   {\markright{\MakeUppercase{\thesection.\ #1}}}
+%\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0pt}
+%\newcommand{\helv}{%
+%   \fontsize{9}{11}\selectfont}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\includegraphics[scale=0.1]{encabezadoI}}
+%\fancyhead[LO]{\rightmark}
+%\fancyhead[RE]{ \leftmark}
+%\markboth{lllls}{}
+%
+%
+%
+%\fancyhead[LO]{\bfseries\rightmark}
+%\fancyhead[RE]{\bfseries\leftmark}
+
+
+
+%-------------------------------------------------------------------------------------------
+%                          Dimensiones del documento
+%--------------------------------------------------------------------------------------------
+\marginsize{3cm}{3cm}{3cm}{3cm}      % Márgenes
+\topmargin -0.5 cm 		                   % Filo superior header - Filo inferior voffset
+\evensidemargin 0 cm 	                   % Desfase Eje izquierdo - Texto (pagina par)
+\oddsidemargin 0cm  	                   % Desfase Eje izquierdo - Texto (pagina impar)
+\textheight 22 cm  		                    % Altura texto
+\textwidth 15.5 cm		                     % Anchura texto
+\headsep = 1.8cm		                    %Cabecera - Texto
+\voffset=-0.2cm		                          	%Cabecera - Borde sup
+\raggedbottom
+
+
+
+
+%----------------------------------------------------
+%Profundidad del Índice de contenidos
+%----------------------------------------------------
+\setcounter{tocdepth}{4} 
+
+
+
+%-----------------------------------
+%Niveles se segmentación
+%-----------------------------------
+\setcounter{secnumdepth}{5} 
+
+
+
+
+%------------------------------------------------------------------
+%               Estilos capitulos
+%-----------------------------------------------------------------
+
+%\usepackage[T1]{fontenc}
+%\usepackage{titlesec, blindtext, color}
+%\definecolor{gray75}{gray}{0.75}
+%\newcommand{\hsp}{\hspace{15pt}}
+%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+
+
+\def\bibname{Bibliografía}
+
+
+%-----------------------------------------------------------------------------------------------------------------------------------
+%                     COMIENZO DOCUMENTO
+%-----------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+
+
+%----------------------------------------
+%Listado de ecuaciones
+%----------------------------------------
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+
+%----------------------------------------
+%Extensiones 
+%----------------------------------------
+\DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png,.gif,.fig,.bmp}
+
+%----------------------------------------
+%Uso de cabeceras
+%----------------------------------------
+\pagestyle{fancy}
+
+%----------------------------------------
+%Redefinir al español los nombres de las tablas
+%----------------------------------------
+\renewcommand\listequationsname{Lista de Ecuaciones}
+\renewcommand\tablename{Tabla}
+\renewcommand\listfigurename{Lista de Figuras}
+\renewcommand\listtablename{Lista de Tablas}
+\renewcommand\tablename{Tabla}
+\renewcommand{\labelitemi}{$\bullet$}
+
+
+
+
+%----------------------------------------
+%              PORTADA
+%----------------------------------------
+\input{portada/portada} 
+
+%----------------------------------------
+%     ÍNDICE CONTENIDOS
+%----------------------------------------
+\thispagestyle{plain}
+\cleardoublepage
+\thispagestyle{plain}
+\dominitoc
+\tableofcontents
+
+%----------------------------------------
+%        LISTA DE TABLAS
+%----------------------------------------
+\thispagestyle{plain}
+\cleardoublepage
+\thispagestyle{plain}
+\listoftables
+
+%----------------------------------------
+%       LISTA DE FIGURAS
+%----------------------------------------
+\thispagestyle{plain}
+\cleardoublepage
+\thispagestyle{plain}
+\listoffigures
+
+%----------------------------------------
+%      LISTA DE ECUACIONES
+%----------------------------------------
+%\thispagestyle{plain}
+%\cleardoublepage	
+%\thispagestyle{plain}								
+%\listofmyequations
+
+%----------------------------------------
+%        GLOSARIO
+%---------------------------------------
+\thispagestyle{plain}
+\cleardoublepage	
+\thispagestyle{plain}
+\include{./glosario/glosario}
+
+%----------------------------------------
+%        OBSERVACIONES
+%----------------------------------------
+\thispagestyle{plain}
+\cleardoublepage
+\include{observaciones/observaciones}
+
+
+
+
+
+
+%-----------------------------------------------------------------------------------------------------------------------------
+%          MEMORIA
+%-----------------------------------------------------------------------------------------------------------------------------
+\vspace{0.8cm}
+\newpage
+\part{Memoria}
+\newpage
+\cleardoublepage
+
+%-----------------------------------------
+%         CAPITULOS
+%------------------------------------------
+\input{objetivos/objetivos}
+\input{clasificacion/clasificacion_grua}
+\input{estructura/viga}
+\input{estructura/pilar}
+\input{estructura/casos}
+\input{motores/motores}
+%\input{cables/cables}
+
+
+
+
+
+
+%--------------------------------------------------------------------------------------------------------------------------------
+%    ANEXOS
+%------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\part{Anexo}
+\renewcommand\appendixname{Anexo} 
+\newpage
+\appendix
+
+%----------------------------------------------
+%    PARTES DEL ANEXO
+%----------------------------------------------
+\input{planos/planos}
+\input{accesorios/accesorios}
+\input{materiales/materiales}
+\input{tablas/tablas}
+\input{calculos_justificativos/calculos_justificativos}
+
+
+%-----------------------------------------------------
+%Enumeración anexos
+%Cambio "Appendice" por "Anexo"
+%-------------------------------------------------------
+\setcounter{section}{0}										
+\renewcommand\thesection{\Alph{subsection}}	
+
+
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------------
+%  BIBLIOGRAFÍA
+%----------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\part{Bibliografía}\label{referencias}
+\newpage
+
+
+\begin{thebibliography} {99}
+
+\bibitem{1} López, M., López, B., Díaz, V. y Fuentes, J. (2012). \emph{Ingeniería del Transporte}. Madrid. Universidad Nacional de Educación a Distancia.
+\bibitem{2} UNE 58-112-91/5. Grúas y aparatos de elevación. Clasificación. Parte 5: Grúas puente y pórtico, 1991.
+\bibitem{3} UNE 58-113-85. Grúas. Acciones del viento, 1985.
+\bibitem{4} UNE 58132-2. Aparatos de elevación. Reglas de cálculo. Parte 2: Solicitaciones y casos de solicitaciones que deben intervenir en el cálculo de las estructuras y de los mecanismos, 2005.
+\bibitem{5} Catálogo grúa pórtico Serie SB SHUTTLELIFT. (www.shuttlelift.com)
+\bibitem{6} Elementos de hormigón y acero HORMIPRESA. (www.hormipresa.com).
+\bibitem{7} UNE 58-112-91/1. Grúas y aparatos de elevación. Clasificación. Parte 1: general, 1991.
+\bibitem{8} UNE 58132-2. Aparatos de elevación. Reglas de cálculo. Parte 2: Solicitaciones y casos de solicitaciones que deben intervenir en el cálculo de las estructuras y de los mecanismos, 2005.
+\bibitem{9}  UNE 58132-3. Aparatos de elevación. Reglas de cálculo. Parte 3: Cálculo de las estructuras y de las uniones, 2005.
+\bibitem{10} Formulario asignatura ``Ingeniería del Transporte''. Curso 2014-2015. Departamento de Ingeniería Mecánica. Universidad Carlos III de Madrid.
+\bibitem{11} CESTRI. Juan Tomás Celigüeta. Escuela Superior de Ingenieros. Universidad de Navarra.
+www1.ceit.es/asignaturas/estructuras1/Programas.htm
+\bibitem{12} Tensión equivalente de Von Misses. www.wikipedia.org
+\bibitem{13} Perfiles de acero AcerlorMittal:     www.constructalia.com/espanol/productos/estructuras/tubos/
+\bibitem{14} Accesorios para gruas DEMAG: www.demagcranes.es
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
